@@ -45,12 +45,27 @@
         </div>
       </div>
 
-      <form class="upload-form">
-        <h3>📤 Subí tu libro para intercambiar</h3>
-        <input type="text" placeholder="Título del libro" required>
-        <input type="file" accept="image/*" required>
-        <button type="submit">Subir</button>
-      </form>
+<form action="https://formspree.io/f/mnngyywj" method="POST" class="upload-form">
+  <h3>📚 Subí tu libro para intercambiar o vender</h3>
+
+  <label for="titulo">Título del libro:</label>
+  <input type="text" id="titulo" name="titulo" placeholder="Ej: Cien años de soledad" required>
+
+  <label for="tipo">Tipo de publicación:</label>
+  <select id="tipo" name="tipo" required>
+    <option value="">Seleccioná una opción</option>
+    <option value="intercambio">Intercambio</option>
+    <option value="venta">Venta</option>
+  </select>
+
+  <label for="precio">Precio (solo si es venta):</label>
+  <input type="number" id="precio" name="precio" placeholder="Ej: 5000">
+
+  <label for="contacto">Tu email o medio de contacto:</label>
+  <input type="email" id="contacto" name="contacto" placeholder="ejemplo@email.com" required>
+
+  <button type="submit">Enviar</button>
+</form>
     </section>
   </main>
 

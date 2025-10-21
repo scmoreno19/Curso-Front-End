@@ -38,11 +38,7 @@ nav a:hover {
   padding: 2rem;
 }
 
-.hero video {
-  width: 80%;
-  border-radius: 10px;
-  margin-top: 1rem;
-}
+
 
 /* Productos - Flexbox */
 #productos {
@@ -80,14 +76,7 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* Form subir libro */
-.upload-form {
-  margin-top: 2rem;
-  background: #e8eaf6;
-  padding: 1rem;
-  border-radius: 10px;
-  display: inline-block;
-}
+
 
 /* Reseñas - Grid */
 #reseñas {
@@ -169,6 +158,63 @@ nav a:hover {
 .amigo-card img {
   width: 100%;
   border-radius: 10px;
+}
+
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+.upload-form h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.upload-form label {
+  font-weight: 600;
+  color: #333;
+  margin-top: 5px;
+}
+
+.upload-form input,
+.upload-form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.upload-form input:focus,
+.upload-form select:focus {
+  outline: none;
+  border-color: #009688;
+  box-shadow: 0 0 4px rgba(0,150,136,0.3);
+}
+
+.upload-form button {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #009688;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-form button:hover {
+  background-color: #00796b;
 }
 
 /* Footer */
