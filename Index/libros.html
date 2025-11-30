@@ -4,83 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Libros - Intercambio y Venta</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="../Css/styles.css">
+
+  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<script src="../js/script.js"></script>
+
 <body>
   <header>
     <h1>📚 Booktify</h1>
+
     <nav>
       <ul>
-<li><a href="../index.html">Inicio</a></li>
-<li><a href="libros.html">Libros</a></li>
-<li><a href="reseñas.html">Reseñas</a></li>
-<li><a href="contacto.html">Contacto</a></li>
-<li><a href="PaginasAmigas.html">Páginas Amigas</a></li>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="reseñas.html">Reseñas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="PaginasAmigas.html">Páginas Amigas</a></li>
       </ul>
     </nav>
 
     <div class="carrito">
-  🛒 <span id="contador-carrito">0</span>
-</div>
+      🛒 <span id="contador-carrito">0</span>
+    </div>
   </header>
 
   <main>
+
+    <!-- PRODUCTOS ESTÁTICOS -->
     <section id="productos">
       <h2>📖 Nuestros Libros</h2>
+
       <div class="libros-container">
+
         <div class="card">
           <img src="../img/princi.png" alt="Libro 1">
           <h3>El Principito</h3>
-          <p>$1500 o intercambio</p>
+          <p class="precio">$1500</p>
+          <button class="btn-carrito">Agregar al carrito</button>
         </div>
 
         <div class="card">
           <img src="../img/1984.jpg" alt="Libro 2">
           <h3>1984</h3>
-          <p>$2000 o intercambio</p>
+          <p class="precio">$2000</p>
+          <button class="btn-carrito">Agregar al carrito</button>
         </div>
 
         <div class="card">
           <img src="../img/cien años.jpg" alt="Libro 3">
           <h3>Cien Años de Soledad</h3>
-          <p>$2500 o intercambio</p>
+          <p class="precio">$2500</p>
+          <button class="btn-carrito">Agregar al carrito</button>
         </div>
+
       </div>
 
-<form action="https://formspree.io/f/mnngyywj" method="POST" class="upload-form">
-  <h3>📚 Subí tu libro para intercambiar o vender</h3>
+      <!-- FORMULARIO -->
+      <form action="https://formspree.io/f/mnngyywj" method="POST" class="upload-form">
+        <h3>📚 Subí tu libro para intercambiar o vender</h3>
 
-  <label for="titulo">Título del libro:</label>
-  <input type="text" id="titulo" name="titulo" placeholder="Ej: Cien años de soledad" required>
+        <label for="titulo">Título del libro:</label>
+        <input type="text" id="titulo" name="titulo" required>
 
-  <label for="tipo">Tipo de publicación:</label>
-  <select id="tipo" name="tipo" required>
-    <option value="">Seleccioná una opción</option>
-    <option value="intercambio">Intercambio</option>
-    <option value="venta">Venta</option>
-  </select>
+        <label for="tipo">Tipo de publicación:</label>
+        <select id="tipo" name="tipo" required>
+          <option value="">Seleccioná una opción</option>
+          <option value="intercambio">Intercambio</option>
+          <option value="venta">Venta</option>
+        </select>
 
-  <label for="precio">Precio (solo si es venta):</label>
-  <input type="number" id="precio" name="precio" placeholder="Ej: 5000">
+        <label for="precio">Precio (solo si es venta):</label>
+        <input type="number" id="precio" name="precio">
 
-  <label for="contacto">Tu email o medio de contacto:</label>
-  <input type="email" id="contacto" name="contacto" placeholder="ejemplo@email.com" required>
+        <label for="contacto">Tu email o medio de contacto:</label>
+        <input type="email" id="contacto" name="contacto" required>
 
-  <button type="submit">Enviar</button>
-</form>
+        <button type="submit">Enviar</button>
+      </form>
     </section>
 
+    <!-- PRODUCTOS DINÁMICOS -->
     <section id="productos-dinamicos">
-          <h2>📚 Libros disponibles</h2>
+      <h2>📚 Libros disponibles</h2>
     </section>
-
 
   </main>
 
   <footer>
     <p>© 2025 Intercambio de Libros - Creado por Sofía Moreno</p>
   </footer>
+
+  <!-- JS (DEBE IR SIEMPRE AL FINAL) -->
+  <script src="../js/script.js"></script>
+
 </body>
 </html>
