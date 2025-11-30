@@ -77,24 +77,52 @@ if (contenedorProductos) {
 
 
 /* =============================
-   CARRITO
+   CARRITO CON PANEL DESPLEGABLE
 ============================= */
 
 let carrito = [];
 const contadorCarrito = document.querySelector("#contador-carrito");
+const carritoPanel = document.querySelector("#carrito-panel");
+const itemsCarrito = document.querySelector("#items-carrito");
 
+/* ABRIR CARRITO */
+document.querySelector(".carrito").addEventListener("click", () => {
+  carritoPanel.classList.add("visible");
+});
+
+/* CERRAR CARRITO */
+document.querySelector("#cerrar-carrito").addEventListener("click", () => {
+  carritoPanel.classList.remove("visible");
+});
+
+/* VACIAR CARRITO */
+document.querySelector("#vaciar-carrito").addEventListener("click", () => {
+  carrito = [];
+  actualizarCarrito();
+});
+
+/* AGREGAR PRODUCTOS */
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-carrito")) {
-    const card = e.target.parentElement;
+    const card = e.target.closest(".card");
     const titulo = card.querySelector("h3").textContent;
     const precio = card.querySelector(".precio").textContent;
 
     carrito.push({ titulo, precio });
-
-    if (contadorCarrito) {
-      contadorCarrito.textContent = carrito.length;
-    }
-
-    alert("Producto agregado al carrito: " + titulo);
+    actualizarCarrito();
   }
 });
+
+/* ACTUALIZA NÚMERO Y LISTA */
+function actualizarCarrito() {
+  contadorCarrito.textContent = carrito.length;
+
+  itemsCarrito.innerHTML = carrito
+    .map(item => `<div><strong>${item.titulo}</strong><br>${item.precio}</div>`)
+    .join("");
+
+  if (carrito.length === 0) {
+    itemsCarrito.innerHTML = "<p>Tu carrito está vacío</p>";
+  }
+}
+
