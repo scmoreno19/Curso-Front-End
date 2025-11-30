@@ -7,17 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (form) {
     form.addEventListener("submit", function (event) {
+      let errores = [];
 
-      // Detectar qué formulario estás usando
-      const nombre = document.querySelector("#nombre"); // contacto.html
+      const nombre = document.querySelector("#nombre");
       const correo = document.querySelector("#correo");
       const mensaje = document.querySelector("#mensaje");
 
-      const titulo = document.querySelector("#titulo"); // libros.html
+      const titulo = document.querySelector("#titulo");
       const tipo = document.querySelector("#tipo");
       const contacto = document.querySelector("#contacto");
-
-      let errores = [];
 
       // FORMULARIO DE CONTACTO
       if (nombre && correo && mensaje) {
@@ -27,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!mensaje.value.trim()) errores.push("El mensaje no puede estar vacío.");
       }
 
-      // FORMULARIO DE SUBIR LIBRO
+      // FORMULARIO SUBIR LIBRO
       if (titulo && tipo && contacto) {
         if (!titulo.value.trim()) errores.push("Debe ingresar el título del libro.");
         if (!tipo.value) errores.push("Debe elegir si es venta o intercambio.");
@@ -44,12 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =============================
-   FETCH API: CARGA DE PRODUCTOS
+FETCH API – CARGA DE PRODUCTOS
 ============================= */
 
-const contenedorProductos = document.querySelector("#productos-dinamicos");
+const contenedor = document.querySelector(".libros-grid");
 
-if (contenedorProductos) {
+if (contenedor) {
   fetch("https://gutendex.com/books/")
     .then(res => res.json())
     .then(data => {
@@ -57,53 +55,52 @@ if (contenedorProductos) {
 
       libros.forEach(libro => {
         const card = document.createElement("div");
-        card.classList.add("card");
+        card.classList.add("card"); // ← CORREGIDO, antes card-libro
 
         card.innerHTML = `
-          <img src="${libro.formats["image/jpeg"] || "../img/no-image.png"}" alt="${libro.title}">
+          <img src="${libro.formats["image/jpeg"] || "./img/no-image.png"}" alt="${libro.title}">
           <h3>${libro.title}</h3>
           <p class="precio">$${(Math.random() * 45 + 5).toFixed(2)}</p>
-          <button class="btn-carrito">Agregar al carrito</button>
+          <button class="btn-agregar">Agregar al carrito</button>
         `;
 
-        contenedorProductos.appendChild(card);
+        contenedor.appendChild(card);
       });
     })
-    .catch(error => {
-      contenedorProductos.innerHTML = "<p>Error al cargar los productos.</p>";
-      console.error(error);
-    });
+    .catch(error => console.error("Error cargando libros:", error));
 }
 
 
+
 /* =============================
-   CARRITO CON PANEL DESPLEGABLE
+          CARRITO
 ============================= */
 
 let carrito = [];
-const contadorCarrito = document.querySelector("#contador-carrito");
-const carritoPanel = document.querySelector("#carrito-panel");
-const itemsCarrito = document.querySelector("#items-carrito");
 
-/* ABRIR CARRITO */
-document.querySelector(".carrito").addEventListener("click", () => {
+const contadorCarrito = document.querySelector("#contador-carrito");
+const itemsCarrito = document.querySelector("#items-carrito");
+const carritoPanel = document.querySelector("#carrito");
+
+/* ABRIR */
+document.getElementById("iconoCarrito")?.addEventListener("click", () => {
   carritoPanel.classList.add("visible");
 });
 
-/* CERRAR CARRITO */
-document.querySelector("#cerrar-carrito").addEventListener("click", () => {
+/* CERRAR */
+document.getElementById("cerrarCarrito")?.addEventListener("click", () => {
   carritoPanel.classList.remove("visible");
 });
 
-/* VACIAR CARRITO */
-document.querySelector("#vaciar-carrito").addEventListener("click", () => {
+/* VACIAR */
+document.getElementById("vaciar-carrito")?.addEventListener("click", () => {
   carrito = [];
   actualizarCarrito();
 });
 
-/* AGREGAR PRODUCTOS */
+/* AGREGAR DESDE CUALQUIER CARD */
 document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("btn-carrito")) {
+  if (e.target.classList.contains("btn-agregar")) {
     const card = e.target.closest(".card");
     const titulo = card.querySelector("h3").textContent;
     const precio = card.querySelector(".precio").textContent;
@@ -113,16 +110,20 @@ document.addEventListener("click", (e) => {
   }
 });
 
-/* ACTUALIZA NÚMERO Y LISTA */
+/* ACTUALIZAR CONTENIDO */
 function actualizarCarrito() {
   contadorCarrito.textContent = carrito.length;
 
-  itemsCarrito.innerHTML = carrito
-    .map(item => `<div><strong>${item.titulo}</strong><br>${item.precio}</div>`)
-    .join("");
-
   if (carrito.length === 0) {
     itemsCarrito.innerHTML = "<p>Tu carrito está vacío</p>";
+    return;
   }
-}
 
+  itemsCarrito.innerHTML = carrito
+    .map(item => `
+      <div class="item-carrito">
+        <strong>${item.titulo}</strong><br>${item.precio}
+      </div>
+    `)
+    .join("");
+}

@@ -1,311 +1,49 @@
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  background-color: #fafafa;
-  color: #333;
-}
-
-/* Header */
-header {
-  background-color: #3f51b5;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 0;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* Hero Section */
-.hero {
-  background: linear-gradient(to right, #e3f2fd, #bbdefb);
-  text-align: center;
-  padding: 2rem;
-}
-
-
-
-/* Productos - Flexbox */
-#productos {
-  padding: 2rem;
-  text-align: center;
-}
-
-.libros-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.card {
+/* === TARJETAS DE LIBROS === */
+.libro-card, .card {
   background: white;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   padding: 1rem;
   width: 250px;
+  text-align: center;
 }
 
+.libro-card img,
 .card img {
   width: 100%;
   border-radius: 10px;
 }
 
-.card button {
-  margin-top: 0.5rem;
-  background-color: #3f51b5;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-
-
-/* Reseñas - Grid */
-#reseñas {
-  background-color: #f3f4f6;
-  padding: 2rem;
-  text-align: center;
-}
-
-.grid-reseñas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.reseña {
-  background: white;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-}
-
-/* Contacto */
-#contacto {
-  padding: 2rem;
-  text-align: center;
-}
-
-#contacto form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-#contacto input, textarea {
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-#contacto button {
-  background-color: #3f51b5;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#paginas-amigas {
-  text-align: center;
-  padding: 30px;
-}
-
-.amigos-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.amigo-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  width: 250px;
-  padding: 15px;
-  transition: transform 0.2s;
-  text-align: center;
-}
-
-.amigo-card:hover {
-  transform: translateY(-5px);
-}
-
-.amigo-card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-
-.upload-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 400px;
-  margin: 30px auto;
-  background: #fff;
-  padding: 20px 25px;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  font-family: 'Poppins', sans-serif;
-}
-
-.upload-form h3 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.upload-form label {
-  font-weight: 600;
-  color: #333;
-  margin-top: 5px;
-}
-
-.upload-form input,
-.upload-form select {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-.upload-form input:focus,
-.upload-form select:focus {
-  outline: none;
-  border-color: #009688;
-  box-shadow: 0 0 4px rgba(0,150,136,0.3);
-}
-
-.upload-form button {
+/* Botón agregar */
+.btn-agregar {
   margin-top: 10px;
   padding: 10px;
   border: none;
   border-radius: 8px;
-  background-color: #009688;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.upload-form button:hover {
-  background-color: #00796b;
-}
-
-/* Footer */
-footer {
   background-color: #3f51b5;
   color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
+  cursor: pointer;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .libros-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #contacto form {
-    width: 90%;
-  }
-
-
-  /* PANEL DEL CARRITO */
-.carrito-panel {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background: white;
-  box-shadow: -2px 0 8px rgba(0,0,0,0.3);
-  padding: 20px;
-  transform: translateX(100%);
-  transition: 0.3s ease;
-  z-index: 9999;
-  font-family: Poppins;
+.btn-agregar:hover {
+  background-color: #303f9f;
 }
 
-.carrito-panel.visible {
-  transform: translateX(0);
-}
 
-.oculto {
+/* === PANEL DEL CARRITO (VISIBILIDAD GLOBAL) === */
+#carrito {
   display: none;
-}
-
-#items-carrito div {
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
-}
-
-.btn-vaciar, .btn-cerrar {
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  background: #ff4d4d;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-cerrar {
-  background: #333;
-}
-
-#productos-dinamicos {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: white;
   padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+  width: 300px;
 }
 
-#productos-dinamicos .card {
-  width: 250px;
-}
-
-#productos-dinamicos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-#productos-dinamicos img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-}
-
-  
+#carrito.visible {
+  display: block;
 }

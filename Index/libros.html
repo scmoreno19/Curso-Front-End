@@ -1,112 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Libros - Intercambio y Venta</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="../Css/styles.css">
-
-  <!-- Fuentes -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros • Biblioteca</title>
+    <link rel="stylesheet" href="../Css/styles.css">
 </head>
-
 <body>
-  <header>
-    <h1>📚 Booktify</h1>
 
-    <nav>
-      <ul>
-        <li><a href="../index.html">Inicio</a></li>
-        <li><a href="libros.html">Libros</a></li>
-        <li><a href="reseñas.html">Reseñas</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-        <li><a href="PaginasAmigas.html">Páginas Amigas</a></li>
-      </ul>
-    </nav>
+    <!-- HEADER -->
+    <header>
+        <h1>Biblioteca Digital</h1>
+        <nav>
+            <a href="../index.html">Inicio</a>
+            <a href="./reseñas.html">Reseñas</a>
+            <a href="./PaginasAmigas.html">Páginas Amigas</a>
+            <a href="./contacto.html">Contacto</a>
+            <a href="#" id="iconoCarrito">🛒 <span id="contador-carrito">0</span></a>
+        </nav>
+    </header>
 
-    <div class="carrito">
-      🛒 <span id="contador-carrito">0</span>
+    <!-- MAIN -->
+    <main class="contenedor-principal">
+
+        <h2>Libros disponibles</h2>
+
+        <!-- 📚 Libros iniciales -->
+        <section class="libros-grid">
+
+            <div class="card">
+                <img src="../img/libro1.jpg" alt="El Principito">
+                <h3>El Principito</h3>
+                <p class="precio">$1500</p>
+                <button class="btn-agregar">Agregar al carrito</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/libro2.jpg" alt="Cien Años de Soledad">
+                <h3>Cien Años de Soledad</h3>
+                <p class="precio">$2300</p>
+                <button class="btn-agregar">Agregar al carrito</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/libro3.jpg" alt="Don Quijote">
+                <h3>Don Quijote</h3>
+                <p class="precio">$1800</p>
+                <button class="btn-agregar">Agregar al carrito</button>
+            </div>
+
+        </section>
+
+        <h2>Más libros (API)</h2>
+
+        <!-- 📦 Contenedor de libros dinámicos -->
+        <section class="libros-grid" id="api-products"></section>
+
+    </main>
+
+    <!-- 🛒 CARRITO MODAL -->
+    <div id="carrito" class="carrito-modal">
+        <div class="carrito-contenido">
+            <h2>Carrito</h2>
+
+            <div id="items-carrito"></div>
+
+            <div class="carrito-botones">
+                <button id="vaciar-carrito" class="btn">Vaciar</button>
+                <button id="cerrarCarrito" class="btn">Cerrar</button>
+            </div>
+        </div>
     </div>
-  </header>
-  <!-- PANEL DEL CARRITO -->
-<div id="carrito-panel" class="carrito-panel oculto">
-  <h2>🛒 Tu carrito</h2>
-  <div id="items-carrito"></div>
 
-  <button id="vaciar-carrito" class="btn-vaciar">Vaciar carrito</button>
-  <button id="cerrar-carrito" class="btn-cerrar">Cerrar</button>
-</div>
-
-
-  <main>
-
-    
-    <section id="productos">
-      <h2>📖 Nuestros Libros</h2>
-
-      <div class="libros-container">
-
-        <div class="card">
-          <img src="../img/princi.png" alt="Libro 1">
-          <h3>El Principito</h3>
-          <p class="precio">$1500</p>
-          <button class="btn-carrito">Agregar al carrito</button>
-        </div>
-
-        <div class="card">
-          <img src="../img/1984.jpg" alt="Libro 2">
-          <h3>1984</h3>
-          <p class="precio">$2000</p>
-          <button class="btn-carrito">Agregar al carrito</button>
-        </div>
-
-        <div class="card">
-          <img src="../img/cien años.jpg" alt="Libro 3">
-          <h3>Cien Años de Soledad</h3>
-          <p class="precio">$2500</p>
-          <button class="btn-carrito">Agregar al carrito</button>
-        </div>
-
-      </div>
-
-      
-      <form action="https://formspree.io/f/mnngyywj" method="POST" class="upload-form">
-        <h3>📚 Subí tu libro para intercambiar o vender</h3>
-
-        <label for="titulo">Título del libro:</label>
-        <input type="text" id="titulo" name="titulo" required>
-
-        <label for="tipo">Tipo de publicación:</label>
-        <select id="tipo" name="tipo" required>
-          <option value="">Seleccioná una opción</option>
-          <option value="intercambio">Intercambio</option>
-          <option value="venta">Venta</option>
-        </select>
-
-        <label for="precio">Precio (solo si es venta):</label>
-        <input type="number" id="precio" name="precio">
-
-        <label for="contacto">Tu email o medio de contacto:</label>
-        <input type="email" id="contacto" name="contacto" required>
-
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-
-    <section id="productos-dinamicos">
-      <h2>📚 Libros disponibles</h2>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>© 2025 Intercambio de Libros - Creado por Sofía Moreno</p>
-  </footer>
-
- 
-  <script src="../js/script.js"></script>
-
+    <script src="../Js/script.js"></script>
 </body>
 </html>
