@@ -1,19 +1,38 @@
+/* =============================
+   VALIDACIÓN DE FORMULARIOS
+============================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("form");
 
   if (form) {
     form.addEventListener("submit", function (event) {
-      const nombre = document.querySelector("#nombre");
+
+      // Detectar qué formulario estás usando
+      const nombre = document.querySelector("#nombre"); // contacto.html
       const correo = document.querySelector("#correo");
       const mensaje = document.querySelector("#mensaje");
 
+      const titulo = document.querySelector("#titulo"); // libros.html
+      const tipo = document.querySelector("#tipo");
+      const contacto = document.querySelector("#contacto");
+
       let errores = [];
 
-      if (!nombre.value.trim()) errores.push("El nombre es obligatorio.");
-      if (!correo.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value))
-        errores.push("Ingrese un correo válido.");
-      if (!mensaje.value.trim()) errores.push("El mensaje no puede estar vacío.");
+      // FORMULARIO DE CONTACTO
+      if (nombre && correo && mensaje) {
+        if (!nombre.value.trim()) errores.push("El nombre es obligatorio.");
+        if (!correo.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value))
+          errores.push("Ingrese un correo válido.");
+        if (!mensaje.value.trim()) errores.push("El mensaje no puede estar vacío.");
+      }
+
+      // FORMULARIO DE SUBIR LIBRO
+      if (titulo && tipo && contacto) {
+        if (!titulo.value.trim()) errores.push("Debe ingresar el título del libro.");
+        if (!tipo.value) errores.push("Debe elegir si es venta o intercambio.");
+        if (!contacto.value.trim()) errores.push("Debe ingresar un medio de contacto.");
+      }
 
       if (errores.length > 0) {
         event.preventDefault();
@@ -24,7 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
+/* =============================
+   FETCH API: CARGA DE PRODUCTOS
+============================= */
 
 const contenedorProductos = document.querySelector("#productos-dinamicos");
 
@@ -32,7 +53,7 @@ if (contenedorProductos) {
   fetch("https://gutendex.com/books/")
     .then(res => res.json())
     .then(data => {
-      const libros = data.results.slice(0, 8); // 8 productos
+      const libros = data.results.slice(0, 8);
 
       libros.forEach(libro => {
         const card = document.createElement("div");
@@ -55,6 +76,9 @@ if (contenedorProductos) {
 }
 
 
+/* =============================
+   CARRITO
+============================= */
 
 let carrito = [];
 const contadorCarrito = document.querySelector("#contador-carrito");
