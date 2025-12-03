@@ -23,17 +23,42 @@
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
       <h2>Encuentra, vende o intercambia tus libros favoritos</h2>
       <p>Únete a nuestra comunidad lectora y da nueva vida a tus libros.</p>
       <img src="img/inicio.jpg" alt="Inicio">
     </section>
+
+    <!-- FORMULARIO DE LOGIN -->
+    <section class="login-container">
+      <h2>Iniciar Sesión</h2>
+
+      <form id="form-login">
+        
+        <label for="id_mail">Email:</label>
+        <input type="email" id="id_mail" placeholder="Ingresa tu email">
+
+        <p id="empty_email_error" class="error-msg"></p>
+
+        <label for="id_psw">Contraseña:</label>
+        <input type="password" id="id_psw" placeholder="Ingresa tu contraseña">
+
+        <p id="empty_psw_error" class="error-msg"></p>
+
+        <p id="login_error_error" class="error-msg"></p>
+
+        <button id="btn_login" class="btn-login">Ingresar</button>
+
+      </form>
+    </section>
+
   </main>
 
   <footer>
     <p>© 2025 Intercambio de Libros - Creado por Sofía Moreno</p>
   </footer>
 
-  <script src="../js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
