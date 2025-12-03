@@ -1,52 +1,97 @@
-function validarForm() {
-    const emailValido = "admin@admin.com";
-    const pswValido = "admin123";
+document.addEventListener("DOMContentLoaded", function () {
 
-    const usrEmail = document.getElementById("id_mail").value.trim();
-    const usrPsw = document.getElementById("id_psw").value.trim();
+  /* ---------- LOGIN (EASY) ---------- */
+  const btnLogin = document.getElementById("btn_login");
+  if (btnLogin) {
+    btnLogin.addEventListener("click", function (ev) {
+      ev.preventDefault();
 
-    let valido = true;
+      const emailEl = document.getElementById("id_mail");
+      const pswEl = document.getElementById("id_psw");
+      const resultEl = document.getElementById("resultado");
 
-    ocultarError("email");
-    ocultarError("psw");
-    ocultarError("login");
+      // valores seguros
+      const emailValido = "admin@admin.com";
+      const pswValido = "admin123";
 
-    if (usrEmail === "") {
-        mostrarError("email", "El email no puede estar vacío");
-        valido = false;
-    }
+      const email = emailEl ? emailEl.value.trim() : "";
+      const psw = pswEl ? pswEl.value.trim() : "";
 
-    if (usrPsw === "") {
-        mostrarError("psw", "La contraseña no puede estar vacía");
-        valido = false;
-    }
+      // limpiar errores
+      hideError("email_error");
+      hideError("psw_error");
+      hideError("login_error");
+      if (resultEl) resultEl.textContent = "";
 
-    if (valido && (usrEmail !== emailValido || usrPsw !== pswValido)) {
-        mostrarError("login", "Credenciales incorrectas");
-        valido = false;
-    }
+      let ok = true;
 
-    return valido;
-}
+      if (!email) {
+        showError("email_error", "El email no puede estar vacío");
+        ok = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError("email_error", "Formato de email inválido");
+        ok = false;
+      }
 
-function mostrarError(id, mensaje) {
-    const e = document.getElementById(id + "_error");
-    e.textContent = "❌ " + mensaje;
-    e.style.display = "block";
-}
+      if (!psw) {
+        showError("psw_error", "La contraseña no puede estar vacía");
+        ok = false;
+      } else if (psw.length < 6) {
+        showError("psw_error", "La contraseña debe tener al menos 6 caracteres");
+        ok = false;
+      }
 
-function ocultarError(id) {
-    const e = document.getElementById(id + "_error");
-    e.style.display = "none";
-}
+      if (ok) {
+        if (email !== emailValido || psw !== pswValido) {
+          showError("login_error", "Credenciales incorrectas");
+          ok = false;
+        }
+      }
 
-document.getElementById("btn_login").addEventListener("click", function (event) {
-    event.preventDefault();
+      if (ok) {
+        if (resultEl) resultEl.textContent = "✔ Envío exitoso";
+        // Si querés redireccionar, descomentá la siguiente línea y crea Index/bienvenida.html
+        // window.location.href = "Index/bienvenida.html";
+      }
+    });
+  }
 
-    if (validarForm()) {
-        document.getElementById("resultado").textContent = "✔ Envío exitoso";
+  /* ---------- VALIDACIÓN SIMPLE CONTACTO ---------- */
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      const name = document.getElementById("c_nombre").value.trim();
+      const email = document.getElementById("c_email").value.trim();
+      const msg = document.getElementById("c_mensaje").value.trim();
+      const errorsEl = document.getElementById("contact_errors");
+      const successEl = document.getElementById("contact_success");
+      if (errorsEl) errorsEl.textContent = "";
+      if (successEl) successEl.textContent = "";
 
-        // OPCIONAL:
-        // window.location.href = "bienvenida.html";
-    }
-});
+      const errors = [];
+      if (name.length < 2) errors.push("Nombre: mínimo 2 caracteres.");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push("Email inválido.");
+      if (msg.length < 10) errors.push("Mensaje: mínimo 10 caracteres.");
+
+      if (errors.length) {
+        if (errorsEl) errorsEl.textContent = errors.join(" - ");
+      } else {
+        if (successEl) successEl.textContent = "✔ Envío exitoso (simulado)";
+        // Aquí podrías hacer fetch() para envío real
+        contactForm.reset();
+      }
+    });
+  }
+
+  /* ---------- helpers ---------- */
+  function showError(id, text) {
+    const el = document.getElementById(id);
+    if (el) { el.textContent = "❌ " + text; el.style.display = "block"; }
+  }
+  function hideError(id) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = "none";
+  }
+
+}); // DOMContentLoaded end

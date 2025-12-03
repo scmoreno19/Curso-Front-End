@@ -1,68 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Intercambio y Venta de Libros</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-</head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Libros - Intercambio y Venta</title>
 
+  <!-- desde Index/ hacia Css/ (subir un nivel) -->
+  <link rel="stylesheet" href="../Css/styles.css">
+</head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo-container">
-            <a href="index.html" class="logo-link">
-                <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" alt="Logo libros">
-                <h1>Intercambio y Venta</h1>
-            </a>
+  <header>
+    <h1>📚 Libros Disponibles</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="reseñas.html">Reseñas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="productos">
+      <h2>📖 Nuestros Libros</h2>
+
+      <div class="libros-container">
+        <div class="card">
+          <img src="../img/libro1.jpg" alt="Libro 1">
+          <h3>El Principito</h3>
+          <p>$1500 o intercambio</p>
         </div>
 
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="libros.html">Libros</a></li>
-                <li><a href="reseñas.html">Reseñas</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+        <div class="card">
+          <img src="../img/libro2.jpg" alt="Libro 2">
+          <h3>1984</h3>
+          <p>$2000 o intercambio</p>
+        </div>
 
-    <main>
+        <div class="card">
+          <img src="../img/libro3.jpg" alt="Libro 3">
+          <h3>Cien Años de Soledad</h3>
+          <p>$2500 o intercambio</p>
+        </div>
+      </div>
 
-        <section class="hero">
-            <h2>Encuentra, vende o intercambia tus libros favoritos</h2>
-            <p>Únete a nuestra comunidad lectora y da nueva vida a tus libros.</p>
-            <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video>
-        </section>
+      <form class="upload-form">
+        <h3>📤 Subí tu libro para intercambiar</h3>
+        <input type="text" placeholder="Título del libro" required>
+        <input type="file" accept="image/*" required>
+        <button type="submit">Subir</button>
+      </form>
+    </section>
+  </main>
 
-        <!-- FORMULARIO EASY -->
-        <section class="login-section">
-            <h2>Ingresar al sistema</h2>
+  <footer>
+    <p>© 2025 Intercambio de Libros - Creado por Sofía Moreno</p>
+  </footer>
 
-            <form id="formLogin">
-                <label>Email:</label>
-                <input id="id_mail" type="email" placeholder="email@example.com">
-                <span id="email_error" class="msg-error"></span>
-
-                <label>Contraseña:</label>
-                <input id="id_psw" type="password" placeholder="contraseña">
-                <span id="psw_error" class="msg-error"></span>
-
-                <span id="login_error" class="msg-error"></span>
-
-                <button id="btn_login">Ingresar</button>
-            </form>
-
-            <p id="resultado" class="resultado"></p>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>© 2025 Intercambio de Libros - Creado por Sofía Moreno</p>
-    </footer>
-
-    <script src="../js/script.js"></script>
+  <!-- desde Index/ hacia js/ -->
+  <script src="../js/script.js" defer></script>
 </body>
 </html>
