@@ -1,278 +1,118 @@
-/* =========================
-   STYLES.CSS UNIFICADO
-   ========================= */
-
-/* RESET BÁSICO */
-* { box-sizing: border-box; }
-html,body { height: 100%; }
-body {
+/* RESET GENERAL */
+* {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #f6f8fb;
-  color: #222;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  line-height: 1.45;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* LINKS POR DEFECTO */
-a { color: inherit; text-decoration: none; }
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
 
-/* =========================
-   HEADER / NAV
-   ========================= */
+/* ==== HEADER ==== */
 header {
   background: #3f51b5;
-  color: #fff;
-  padding: 14px 18px;
+  padding: 15px;
+  color: white;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 20px;
-  display: inline-block;
-}
-
-header nav {
-  display: flex;
   align-items: center;
-  gap: 12px;
 }
 
-/* Si usás un <ul> en el nav o enlaces sueltos, esto cubre ambos */
-header nav ul { list-style: none; margin:0; padding:0; display:flex; gap:12px; align-items:center; }
-header nav li { margin:0; padding:0; }
 header nav a {
-  color: #fff;
-  font-weight: 600;
-  padding: 6px 10px;
-  border-radius: 6px;
-}
-header nav a:hover { background: rgba(255,255,255,0.08); }
-
-/* contador pequeño dentro del link del carrito */
-#contador-carrito {
-  background: rgba(255,255,255,0.15);
-  padding: 2px 6px;
-  border-radius: 10px;
-  margin-left: 6px;
-  font-weight:700;
-  font-size: 13px;
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* =========================
-   LAYOUT GENERAL
-   ========================= */
-main {
-  max-width: 1100px;
-  margin: 22px auto;
-  padding: 0 16px 40px;
+header nav a:hover {
+  text-decoration: underline;
 }
 
-/* Títulos secciones */
-main h2 {
-  margin: 18px 0;
-  color: #0b3a66;
-  font-size: 20px;
-}
-
-/* =========================
-   GRID / CARDS
-   ========================= */
-/* Reutilizable: .libros-grid o .grid-libros */
-.libros-grid, .grid-libros {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  align-items: start;
-}
-
-/* Si usás .libros-container con flex */
-.libros-container {
+/* === CONTENEDOR DE LIBROS === */
+.grid-libros {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 20px;
   justify-content: center;
+  padding: 30px;
 }
 
-/* Card base (usar .card para todo) */
-.card, .libro-card {
-  background: #fff;
+/* === TARJETAS === */
+.libro-card, .card {
+  background: white;
   border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(19,29,39,0.06);
-  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 1rem;
+  width: 250px;
   text-align: center;
-  transition: transform .18s ease, box-shadow .18s ease;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
 }
 
-.card:hover, .libro-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(19,29,39,0.09);
-}
-
-/* Imagen dentro de la card */
-.card img, .libro-card img {
+.libro-card img,
+.card img {
   width: 100%;
-  height: 260px;
+  height: 300px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
-/* Título / precio */
-.card h3, .libro-card h3 {
-  margin: 6px 0 0 0;
-  font-size: 16px;
-  color: #1b2b4a;
-}
-
-.card .precio, .libro-card .precio {
-  color: #0077cc;
-  font-weight: 700;
-}
-
-/* Acciones en la card */
-.card .card-actions, .libro-card .card-actions {
-  margin-top: auto; /* llevar al pie */
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Botones */
 .btn-agregar {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3f51b5;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+.btn-agregar:hover {
+  background-color: #303f9f;
+}
+
+/* === PANEL DEL CARRITO === */
+#carrito {
+  display: none;
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+  width: 300px;
+}
+
+#carrito.visible {
+  display: block;
+}
+
+.carrito-lista div {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.carrito-total {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.btn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 20px;
   background: #3f51b5;
   color: white;
   border: none;
-  padding: 8px 12px;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 700;
-}
-.btn-agregar:hover { background: #2e3fa6; }
-
-.btn-fav {
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  padding: 8px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.btn-fav.favorito {
-  border-color: #e91e63;
-  color: #e91e63;
-}
-
-/* =========================
-   FORMULARIOS Y MENSAJES
-   ========================= */
-form.validate, form.upload-form, form#contact-form {
-  background: #fff;
-  padding: 16px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(19,29,39,0.05);
-  max-width: 720px;
-  margin: 16px auto;
-}
-
-form.validate label, form.upload-form label {
-  display:block;
-  margin-top:8px;
-  font-weight:600;
-}
-
-form.validate input, form.validate textarea,
-form.upload-form input, form.upload-form select, form#contact-form input {
-  width:100%;
-  padding:10px;
-  border-radius:8px;
-  border:1px solid #dcdcdc;
-  margin-top:6px;
-}
-
-.form-messages {
-  margin-top:12px;
-  padding:10px;
-  border-radius:8px;
-  display:none;
-}
-.form-messages.error { display:block; background:#fff2f2; color:#b00020; border:1px solid #f1c0c0; }
-.form-messages.success { display:block; background:#f0fff4; color:#0b6b2c; border:1px solid #c7f0d0; }
-
-/* Contenedor de errores simple (contacto) */
-#errores {
-  margin-top:10px;
-  font-size:14px;
-}
-
-/* =========================
-   CARRITO (PÁGINA: Carrito.html)
-   ========================= */
-.carrito-contenedor, .carrito-lista {
-  background: #fff;
-  padding: 18px;
-  border-radius: 10px;
-  box-shadow: 0 8px 22px rgba(19,29,39,0.06);
-  max-width: 880px;
-  margin: 20px auto;
-}
-
-.carrito-item {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:10px 0;
-  border-bottom:1px solid #eee;
-}
-.carrito-item:last-child { border-bottom:none; }
-
-.carrito-item .titulo { flex:1; text-align:left; }
-.carrito-item .precio { width:110px; text-align:right; font-weight:700; color:#0077cc; }
-
-.btn-eliminar {
-  background:#d32f2f; color:#fff; border:none; padding:6px 10px; border-radius:6px; cursor:pointer;
-}
-.btn-eliminar:hover { background:#b71c1c; }
-
-.carrito-total {
-  font-weight:800;
-  font-size:18px;
-  text-align:right;
-  margin-top:12px;
-}
-
-/* =========================
-   FOOTER
-   ========================= */
-footer {
-  margin-top: 36px;
-  background: #1b2438;
-  color: #fff;
-  padding: 18px 10px;
-  text-align:center;
-}
-
-/* =========================
-   UTILITY / RESPONSIVE
-   ========================= */
-.container-center { max-width:1100px; margin:0 auto; padding:0 16px; }
-
-@media (max-width: 980px) {
-  .libros-grid, .grid-libros { grid-template-columns: repeat(2, 1fr); display:grid; }
-  header { padding: 12px; }
-}
-
-@media (max-width: 680px) {
-  .libros-grid, .grid-libros { grid-template-columns: 1fr; display:grid; }
-  header { flex-direction: column; align-items:flex-start; gap:10px; }
-  .card img, .libro-card img { height: 220px; }
+  font-size: 16px;
 }
