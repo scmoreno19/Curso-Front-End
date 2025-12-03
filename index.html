@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Inicio - Intercambio y Venta de Libros</title>
-
-  <!-- RUTA: desde la raíz hacia la carpeta Css -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booktify</title>
   <link rel="stylesheet" href="Css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <header>
-    <div class="logo-container">
-      <a href="index.html" class="logo-link">
-        <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" alt="Logo libros">
-        <h1>Intercambio y Venta</h1>
-      </a>
-    </div>
-
+    <h1>📚 Booktify</h1>
     <nav>
       <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="Index/libros.html">Libros</a></li>
-        <li><a href="Index/reseñas.html">Reseñas</a></li>
-        <li><a href="Index/contacto.html">Contacto</a></li>
-        <li><a href="Index/PaginasAmigas.html">Páginas Amigas</a></li>
+<li><a href="Index/libros.html">Libros</a></li>
+<li><a href="Index/reseñas.html">Reseñas</a></li>
+<li><a href="Index/contacto.html">Contacto</a></li>
+<li><a href="Index/PaginasAmigas.html">Páginas Amigas</a></li>
+
       </ul>
     </nav>
   </header>
@@ -32,37 +26,12 @@
     <section class="hero">
       <h2>Encuentra, vende o intercambia tus libros favoritos</h2>
       <p>Únete a nuestra comunidad lectora y da nueva vida a tus libros.</p>
-      <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls></video>
-    </section>
-
-    <!-- FORMULARIO EASY (LOGIN) -->
-    <section class="login-section">
-      <h2>Ingresar al sistema</h2>
-
-      <form id="formLogin" novalidate>
-        <label for="id_mail">Email:</label>
-        <input id="id_mail" type="email" placeholder="email@example.com">
-
-        <span id="email_error" class="msg-error"></span>
-
-        <label for="id_psw">Contraseña:</label>
-        <input id="id_psw" type="password" placeholder="contraseña">
-
-        <span id="psw_error" class="msg-error"></span>
-        <span id="login_error" class="msg-error"></span>
-
-        <button id="btn_login" type="button">Ingresar</button>
-      </form>
-
-      <p id="resultado" class="resultado"></p>
+      <img src="../img/inicio.jpg" alt="Escape a Plutón Logo">
     </section>
   </main>
 
   <footer>
     <p>© 2025 Intercambio de Libros - Creado por Sofía Moreno</p>
   </footer>
-
-  <!-- RUTA: desde la raíz hacia js -->
-  <script src="js/script.js" defer></script>
 </body>
 </html>
