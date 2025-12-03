@@ -1,17 +1,3 @@
-// Vamos a identificar con un id al formulario, a los campos (email y psw) 
-// y también al botón de Ingresar
-
-//Vamos a extraer los datos de los campos email y psw
-
-//Crear una función que permita comparar el email y psw con los datos válidos
-//Utilizamos email y psw hardcodeados.
-
-//Si los datos que ingresa el usuario son correctos, redireccionamos a 
-//bienvenida.html
-
-//Caso contrario , mostramos un mensaje de error.
-
-
 function validarForm() {
   console.log("ValidarForm");
   const emailValido = "admin@admin.com";
@@ -66,9 +52,9 @@ sobre el mismo, se dispare la función de validarForm.
 */
 const btnIngresar = document.getElementById('btn_login');
 btnIngresar.addEventListener('click', function(event) {
-  event.preventDefault;
+  event.preventDefault();
   console.log("Entramos en el listener");
-  if(validarForm()) {
-    window.location.href = "pages/bienvenida.html";
+  if (validarForm()) {
+    window.location.href = "Index/bienvenida.html";
   }
 })
