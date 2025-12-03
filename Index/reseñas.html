@@ -3,55 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reseñas - Intercambio y Venta</title>
+  <title>Reseñas - Booktify</title>
   <link rel="stylesheet" href="../Css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <h1>📚 Booktify</h1>
-    <nav>
-      <a href="../index.html">Inicio</a>
-      <a href="./reseñas.html">Reseñas</a>
-      <a href="./PaginasAmigas.html">Páginas Amigas</a>
-      <a href="./contacto.html">Contacto</a>
-      <a href="./Carrito.html">🛒 Carrito <span id="contador-carrito">0</span></a>
-    </nav>
-  </header>
 
-  <!-- PANEL DEL CARRITO -->
-  <div id="carrito-panel" class="carrito-panel oculto">
-    <h2>🛒 Tu carrito</h2>
-    <div id="items-carrito"></div>
+<header>
+  <h1>📚 Booktify</h1>
+  <nav>
+    <a href="../index.html">Inicio</a>
+    <a href="./libros.html">Libros</a>
+    <a href="./reseñas.html">Reseñas</a>
+    <a href="./PaginasAmigas.html">Páginas Amigas</a>
+    <a href="./contacto.html">Contacto</a>
+  </nav>
+</header>
 
-    <button id="vaciar-carrito" class="btn-vaciar">Vaciar carrito</button>
-    <button id="cerrar-carrito" class="btn-cerrar">Cerrar</button>
-  </div>
+<main>
+  <section class="grid-reseñas">
+    <div class="reseña">
+      “Excelente plataforma, vendí mi libro en dos días.” <strong>- Laura G.</strong>
+    </div>
 
-  <main>
-    <section id="reseñas">
-      <div class="grid-reseñas">
-        <div class="reseña">
-          <p>“Excelente plataforma, vendí mi libro en dos días.”</p>
-          <strong>- Laura G.</strong>
-        </div>
-        <div class="reseña">
-          <p>“Me encanta poder intercambiar libros sin gastar tanto.”</p>
-          <strong>- Martín P.</strong>
-        </div>
-        <div class="reseña">
-          <p>“Muy fácil de usar, la recomiendo.”</p>
-          <strong>- Sofía M.</strong>
-        </div>
-      </div>
-    </section>
-  </main>
+    <div class="reseña">
+      “Me encanta poder intercambiar libros sin gastar tanto.” <strong>- Martín P.</strong>
+    </div>
 
-  <footer>
-    <p>© 2025 Intercambio de Libros - Creado por Sofía Moreno</p>
-  </footer>
+    <div class="reseña">
+      “Muy fácil de usar, la recomiendo.” <strong>- Sofía M.</strong>
+    </div>
+  </section>
+</main>
 
-<script src="../js/script.js" defer></script>
+<footer>
+  <p>© 2025 Booktify</p>
+</footer>
+
 </body>
 </html>

@@ -3,66 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto - Intercambio y Venta</title>
+  <title>Contacto - Booktify</title>
   <link rel="stylesheet" href="../Css/styles.css">
-  
-<a href="../index.html">Inicio</a>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <h1>📚 Booktify</h1>
-         <nav>
-      <a href="../index.html">Inicio</a>
-      <a href="./reseñas.html">Reseñas</a>
-      <a href="./PaginasAmigas.html">Páginas Amigas</a>
-      <a href="./contacto.html">Contacto</a>
-      <a href="./Carrito.html">🛒 Carrito <span id="contador-carrito">0</span></a>
-    </nav>
-   
-  </header>
 
-<div id="carrito-panel" class="carrito-panel oculto">
-  <h2>🛒 Tu carrito</h2>
-  <div id="items-carrito"></div>
+<header>
+  <h1>📚 Booktify</h1>
+  <nav>
+    <a href="../index.html">Inicio</a>
+    <a href="./libros.html">Libros</a>
+    <a href="./reseñas.html">Reseñas</a>
+    <a href="./PaginasAmigas.html">Páginas Amigas</a>
+    <a href="./contacto.html">Contacto</a>
+  </nav>
+</header>
 
-  <button id="vaciar-carrito" class="btn-vaciar">Vaciar carrito</button>
-  <button id="cerrar-carrito" class="btn-cerrar">Cerrar</button>
-</div>
+<main>
+  <h2>Contacto</h2>
 
+  <form id="form-contacto" onsubmit="return validarFormulario()">
+    <input type="text" id="nombre" placeholder="Tu nombre">
+    <input type="email" id="email" placeholder="Tu email">
+    <textarea id="mensaje" placeholder="Escribe tu mensaje"></textarea>
 
-  <main>
-    <section id="contacto">
-      <h2>Envíanos un mensaje</h2>
-      <form action="https://formspree.io/f/xrbyvvrg" method="POST">
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required>
+    <button class="btn" type="submit">Enviar</button>
 
-        <label>Correo Electrónico:</label>
-        <input type="email" name="email" required>
+    <div id="errores"></div>
+  </form>
 
-        <label>Mensaje:</label>
-        <textarea name="mensaje" required></textarea>
+</main>
 
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-    <form onsubmit="return validarFormulario()">
-  <input type="text" id="nombre" placeholder="Tu nombre">
-  <input type="email" id="email" placeholder="Tu email">
-  <textarea id="mensaje" placeholder="Escribe tu mensaje"></textarea>
-
-  <button class="btn" type="submit">Enviar</button>
-
-  <div id="errores"></div>
-</form>
-
-  </main>
-
-  <footer>
-    <p>© 2025 Intercambio de Libros - Creado por Sofía Moreno</p>
-  </footer>
+<footer>
+  <p>© 2025 Booktify - Creado por Sofía Moreno</p>
+</footer>
 
 <script src="../js/script.js" defer></script>
 </body>

@@ -1,55 +1,32 @@
-function validarForm() {
-  console.log("ValidarForm");
-  const emailValido = "admin@admin.com";
-  const pswValido = "admin123";
+function validarFormulario() {
+    const nombre = document.getElementById("nombre").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+    const errores = document.getElementById("errores");
 
-  const usrEmail = document.getElementById('id_mail').value;
-  const usrPsw = document.getElementById('id_psw').value;
+    errores.innerHTML = "";
 
-  let esValido = true;
+    let mensajes = [];
 
-  // Validación email vacío
-  if (usrEmail.length < 1) {
-    mostrarError('empty_email', 'El campo email no puede estar vacío');
-    esValido = false;
-  } else {
-    ocultarError('empty_email');
-  }
+    if (nombre.length < 3) {
+        mensajes.push("El nombre debe tener al menos 3 caracteres.");
+    }
 
-  // Validación password vacío
-  if (usrPsw.length < 1) {
-    mostrarError('empty_psw', 'El campo password no puede estar vacío');
-    esValido = false;
-  } else {
-    ocultarError('empty_psw');
-  }
+    if (!email.includes("@") || !email.includes(".")) {
+        mensajes.push("El email no es válido.");
+    }
 
-  // Validación credenciales
-  if (emailValido !== usrEmail || pswValido !== usrPsw) {
-    mostrarError('login_error', 'Las credenciales no son válidas');
-    esValido = false;
-  } else {
-    ocultarError('login_error');
-  }
+    if (mensaje.length < 10) {
+        mensajes.push("El mensaje debe tener al menos 10 caracteres.");
+    }
 
-  return esValido;
+    if (mensajes.length > 0) {
+        errores.innerHTML = mensajes.join("<br>");
+        errores.classList.add("error-box");
+        return false;
+    }
+
+    errores.innerHTML = "<strong>Envío exitoso ✔</strong>";
+    errores.classList.add("ok-box");
+    return false;
 }
-
-function mostrarError(fieldId, message) {
-  const errorElement = document.getElementById(fieldId + '_error');
-  errorElement.textContent = "❌ " + message;
-  errorElement.style.display = 'block';
-}
-
-function ocultarError(fieldId) {
-  const errorElement = document.getElementById(fieldId + '_error');
-  errorElement.style.display = 'none';
-}
-
-const btnIngresar = document.getElementById('btn_login');
-btnIngresar.addEventListener('click', function(event) {
-  event.preventDefault();
-  if (validarForm()) {
-    window.location.href = "pages/bienvenida.html";
-  }
-});

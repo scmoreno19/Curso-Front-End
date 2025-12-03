@@ -1,77 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libros • Biblioteca</title>
-    <link rel="stylesheet" href="../Css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libros • Booktify</title>
+  <link rel="stylesheet" href="../Css/styles.css">
 </head>
+
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <h1>Biblioteca Digital</h1>
-        <nav>
-            <a href="../index.html">Inicio</a>
-            <a href="./reseñas.html">Reseñas</a>
-            <a href="./PaginasAmigas.html">Páginas Amigas</a>
-            <a href="./contacto.html">Contacto</a>
-            <a href="./carrito.html">🛒 Carrito <span id="contador-carrito">0</span></a>
-        </nav>
-    </header>
+<header>
+  <h1>Biblioteca Digital</h1>
+  <nav>
+    <a href="../index.html">Inicio</a>
+    <a href="./libros.html">Libros</a>
+    <a href="./reseñas.html">Reseñas</a>
+    <a href="./PaginasAmigas.html">Páginas Amigas</a>
+    <a href="./contacto.html">Contacto</a>
+  </nav>
+</header>
 
-    <!-- MAIN -->
-    <main class="contenedor-principal">
+<main class="contenedor-principal">
+  <h2>Libros disponibles</h2>
 
-        <h2>Libros disponibles</h2>
+  <section class="libros-grid">
 
-        <!-- 📚 Libros iniciales -->
-        <section class="libros-grid">
+      <div class="card">
+          <img src="../img/libro1.jpg" alt="El Principito">
+          <h3>El Principito</h3>
+          <p class="precio">$1500</p>
+      </div>
 
-            <div class="card">
-                <img src="../img/libro1.jpg" alt="El Principito">
-                <h3>El Principito</h3>
-                <p class="precio">$1500</p>
-                <button class="btn-agregar">Agregar al carrito</button>
-            </div>
+      <div class="card">
+          <img src="../img/libro2.jpg" alt="Cien Años de Soledad">
+          <h3>Cien Años de Soledad</h3>
+          <p class="precio">$2300</p>
+      </div>
 
-            <div class="card">
-                <img src="../img/libro2.jpg" alt="Cien Años de Soledad">
-                <h3>Cien Años de Soledad</h3>
-                <p class="precio">$2300</p>
-                <button class="btn-agregar">Agregar al carrito</button>
-            </div>
+      <div class="card">
+          <img src="../img/libro3.jpg" alt="Don Quijote">
+          <h3>Don Quijote</h3>
+          <p class="precio">$1800</p>
+      </div>
 
-            <div class="card">
-                <img src="../img/libro3.jpg" alt="Don Quijote">
-                <h3>Don Quijote</h3>
-                <p class="precio">$1800</p>
-                <button class="btn-agregar">Agregar al carrito</button>
-            </div>
+  </section>
 
-        </section>
+</main>
 
-        <h2>Más libros (API)</h2>
+<footer>
+  <p>© 2025 Booktify - Sofía Moreno</p>
+</footer>
 
-        <!-- 📦 Contenedor de libros dinámicos -->
-        <section class="libros-grid" id="api-products"></section>
-
-    </main>
-
-    <!-- 🛒 CARRITO MODAL -->
-    <div id="carrito" class="carrito-modal">
-        <div class="carrito-contenido">
-            <h2>Carrito</h2>
-
-            <div id="items-carrito"></div>
-
-            <div class="carrito-botones">
-                <button id="vaciar-carrito" class="btn">Vaciar</button>
-                <button id="cerrarCarrito" class="btn">Cerrar</button>
-            </div>
-        </div>
-    </div>
-
-<script src="../js/script.js" defer></script>
 </body>
 </html>
