@@ -14,29 +14,36 @@
     <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="libros.html">Libros</a></li>
-        <li><a href="reseñas.html">Reseñas</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="Index/libros.html">Libros</a></li>
+        <li><a href="Index/reseñas.html">Reseñas</a></li>
+        <li><a href="Index/PaginasAmigas.html">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section id="contacto">
-      <h2>Envíanos un mensaje</h2>
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required>
 
-        <label>Correo Electrónico:</label>
-        <input type="email" name="email" required>
+    <main>
+  <section id="contacto">
+    <h2>Iniciar sesión</h2>
 
-        <label>Mensaje:</label>
-        <textarea name="mensaje" required></textarea>
+    <form id="loginForm">
+      <label>Email:</label>
+      <input type="email" id="id_mail">
 
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
+      <p id="empty_email_error" class="msg-error"></p>
+
+      <label>Contraseña:</label>
+      <input type="password" id="id_psw">
+
+      <p id="empty_psw_error" class="msg-error"></p>
+
+      <p id="login_error_error" class="msg-error"></p>
+
+      <button id="btn_login">Ingresar</button>
+    </form>
+
+  </section>
+
   </main>
 
   <footer>

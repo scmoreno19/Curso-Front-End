@@ -1,32 +1,57 @@
-function validarFormulario() {
-    const nombre = document.getElementById("nombre").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const mensaje = document.getElementById("mensaje").value.trim();
-    const errores = document.getElementById("errores");
+function validarForm() {
+  const emailValido = "admin@admin.com";
+  const pswValido = "admin123";
 
-    errores.innerHTML = "";
+  const usrEmail = document.getElementById('id_mail').value.trim();
+  const usrPsw = document.getElementById('id_psw').value.trim();
 
-    let mensajes = [];
+  let esValido = true;
 
-    if (nombre.length < 3) {
-        mensajes.push("El nombre debe tener al menos 3 caracteres.");
-    }
+  // Validar email vacío
+  if (usrEmail.length < 1) {
+    mostrarError("empty_email_error", "El campo email no puede estar vacío");
+    esValido = false;
+  } else {
+    ocultarError("empty_email_error");
+  }
 
-    if (!email.includes("@") || !email.includes(".")) {
-        mensajes.push("El email no es válido.");
-    }
+  // Validar contraseña vacía
+  if (usrPsw.length < 1) {
+    mostrarError("empty_psw_error", "El campo password no puede estar vacío");
+    esValido = false;
+  } else {
+    ocultarError("empty_psw_error");
+  }
 
-    if (mensaje.length < 10) {
-        mensajes.push("El mensaje debe tener al menos 10 caracteres.");
-    }
+  // Validar credenciales
+  if (usrEmail !== emailValido || usrPsw !== pswValido) {
+    mostrarError("login_error_error", "Las credenciales no son válidas");
+    esValido = false;
+  } else {
+    ocultarError("login_error_error");
+  }
 
-    if (mensajes.length > 0) {
-        errores.innerHTML = mensajes.join("<br>");
-        errores.classList.add("error-box");
-        return false;
-    }
-
-    errores.innerHTML = "<strong>Envío exitoso ✔</strong>";
-    errores.classList.add("ok-box");
-    return false;
+  return esValido;
 }
+
+function mostrarError(id, mensaje) {
+  const elemento = document.getElementById(id);
+  elemento.textContent = "❌ " + mensaje;
+  elemento.style.display = "block";
+}
+
+function ocultarError(id) {
+  const elemento = document.getElementById(id);
+  elemento.style.display = "none";
+}
+
+// Listener del botón
+const btnIngresar = document.getElementById("btn_login");
+
+btnIngresar.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  if (validarForm()) {
+    window.location.href = "bienvenida.html";
+  }
+});
