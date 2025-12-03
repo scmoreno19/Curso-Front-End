@@ -3,53 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Libros • Booktify</title>
-  <link rel="stylesheet" href="../Css/styles.css">
+  <title>Libros - Intercambio y Venta</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <header>
+    <h1>📚 Libros Disponibles</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="reseñas.html">Reseñas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header>
-  <h1>Biblioteca Digital</h1>
-  <nav>
-    <a href="../index.html">Inicio</a>
-    <a href="./libros.html">Libros</a>
-    <a href="./reseñas.html">Reseñas</a>
-    <a href="./PaginasAmigas.html">Páginas Amigas</a>
-    <a href="./contacto.html">Contacto</a>
-  </nav>
-</header>
-
-<main class="contenedor-principal">
-  <h2>Libros disponibles</h2>
-
-  <section class="libros-grid">
-
-      <div class="card">
-          <img src="../img/libro1.jpg" alt="El Principito">
+  <main>
+    <section id="productos">
+      <h2>📖 Nuestros Libros</h2>
+      <div class="libros-container">
+        <div class="card">
+          <img src="https://via.placeholder.com/200x250" alt="Libro 1">
           <h3>El Principito</h3>
-          <p class="precio">$1500</p>
-      </div>
+          <p>$1500 o intercambio</p>
+        </div>
 
-      <div class="card">
-          <img src="../img/libro2.jpg" alt="Cien Años de Soledad">
+        <div class="card">
+          <img src="https://via.placeholder.com/200x250" alt="Libro 2">
+          <h3>1984</h3>
+          <p>$2000 o intercambio</p>
+        </div>
+
+        <div class="card">
+          <img src="https://via.placeholder.com/200x250" alt="Libro 3">
           <h3>Cien Años de Soledad</h3>
-          <p class="precio">$2300</p>
+          <p>$2500 o intercambio</p>
+        </div>
       </div>
 
-      <div class="card">
-          <img src="../img/libro3.jpg" alt="Don Quijote">
-          <h3>Don Quijote</h3>
-          <p class="precio">$1800</p>
-      </div>
+      <form class="upload-form">
+        <h3>📤 Subí tu libro para intercambiar</h3>
+        <input type="text" placeholder="Título del libro" required>
+        <input type="file" accept="image/*" required>
+        <button type="submit">Subir</button>
+      </form>
+    </section>
+  </main>
 
-  </section>
-
-</main>
-
-<footer>
-  <p>© 2025 Booktify - Sofía Moreno</p>
-</footer>
-
+  <footer>
+    <p>© 2025 Intercambio de Libros - Creado por Sofía Moreno</p>
+  </footer>
 </body>
 </html>

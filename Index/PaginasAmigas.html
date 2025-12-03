@@ -3,50 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Páginas Amigas - Booktify</title>
-  <link rel="stylesheet" href="../Css/styles.css">
+  <title>Páginas Amigas - Intercambio y Venta</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="../img/logo.png" alt="Logo Intercambio Libros">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="libros.html">Libros</a></li>
+        <li><a href="reseñas.html">Reseñas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="PaginasAmigas.html" class="activo">Páginas Amigas</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header>
-  <h1>📚 Booktify</h1>
-  <nav>
-    <a href="../index.html">Inicio</a>
-    <a href="./libros.html">Libros</a>
-    <a href="./reseñas.html">Reseñas</a>
-    <a href="./PaginasAmigas.html">Páginas Amigas</a>
-    <a href="./contacto.html">Contacto</a>
-  </nav>
-</header>
+  <main>
+    <section id="paginas-amigas">
+      <h2>📖 Amigos de la comunidad</h2>
+      <p>Descubrí otros sitios increíbles para lectores y amantes de los libros:</p>
 
-<main>
-  <section id="paginas-amigas">
-    <h2>📖 Amigos de la comunidad</h2>
+      <div class="amigos-container">
+        <div class="amigo-card">
+          <a href="https://escapeapluton.com" target="_blank">
+            <img src="../img/escapeapluton-logo.png" alt="Escape a Plutón Logo">
+            <h3>Escape a Plutón</h3>
+          </a>
+          <p>Blog de literatura y reseñas con un toque creativo. Ideal para descubrir nuevas lecturas.</p>
+        </div>
 
-    <div class="amigos-container">
-
-      <div class="amigo-card">
-        <a href="https://www.escapeapluton.com.ar/inicio" target="_blank">
-          <img src="../img/logo2.png" alt="Escape a Plutón">
-          <h3>Escape a Plutón</h3>
-        </a>
+        <div class="amigo-card">
+          <a href="https://www.eltemplodelasmilpuertas.com" target="_blank">
+            <img src="../img/templodelasmilpuertas-logo.png" alt="El Templo de las Mil Puertas Logo">
+            <h3>El Templo de las Mil Puertas</h3>
+          </a>
+          <p>Revista online dedicada a la literatura juvenil, entrevistas y recomendaciones de autores.</p>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <div class="amigo-card">
-        <a href="https://www.eltemplodelasmilpuertas.com" target="_blank">
-          <img src="../img/logo1.png" alt="Templo de las Mil Puertas">
-          <h3>El Templo de las Mil Puertas</h3>
-        </a>
-      </div>
-
-    </div>
-  </section>
-</main>
-
-<footer>
-  <p>© 2025 Booktify - Sofía Moreno</p>
-</footer>
-
+  <footer>
+    <p>© 2025 Intercambio de Libros - Creado por Sofía Moreno</p>
+  </footer>
 </body>
 </html>
