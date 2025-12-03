@@ -1,129 +1,109 @@
-/* =============================
-   VALIDACIÓN DE FORMULARIOS
-============================= */
+/* ============================================================
+   ================   MANEJO DEL CARRITO   =====================
+   ============================================================ */
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("form");
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  if (form) {
-    form.addEventListener("submit", function (event) {
-      let errores = [];
+/* --- Actualiza contador en todas las páginas --- */
+function actualizarContador() {
+    const contador = document.getElementById("contador-carrito");
+    if (contador) contador.textContent = carrito.length;
+}
+actualizarContador();
 
-      const nombre = document.querySelector("#nombre");
-      const correo = document.querySelector("#correo");
-      const mensaje = document.querySelector("#mensaje");
+/* --- Agregar al carrito --- */
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-agregar")) {
 
-      const titulo = document.querySelector("#titulo");
-      const tipo = document.querySelector("#tipo");
-      const contacto = document.querySelector("#contacto");
+        const titulo = e.target.dataset.titulo;
+        const precio = parseInt(e.target.dataset.precio);
 
-      // FORMULARIO DE CONTACTO
-      if (nombre && correo && mensaje) {
-        if (!nombre.value.trim()) errores.push("El nombre es obligatorio.");
-        if (!correo.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo.value))
-          errores.push("Ingrese un correo válido.");
-        if (!mensaje.value.trim()) errores.push("El mensaje no puede estar vacío.");
-      }
+        carrito.push({ titulo, precio });
 
-      // FORMULARIO SUBIR LIBRO
-      if (titulo && tipo && contacto) {
-        if (!titulo.value.trim()) errores.push("Debe ingresar el título del libro.");
-        if (!tipo.value) errores.push("Debe elegir si es venta o intercambio.");
-        if (!contacto.value.trim()) errores.push("Debe ingresar un medio de contacto.");
-      }
+        localStorage.setItem("carrito", JSON.stringify(carrito));
 
-      if (errores.length > 0) {
-        event.preventDefault();
-        alert(errores.join("\n"));
-      }
-    });
-  }
+        actualizarContador();
+        alert("Libro agregado al carrito ❤️");
+    }
 });
 
+/* --- Mostrar carrito en Carrito.html --- */
+function mostrarCarrito() {
+    const contenedor = document.getElementById("lista-carrito");
+    const totalElem = document.getElementById("total");
 
-/* =============================
-FETCH API – CARGA DE PRODUCTOS
-============================= */
+    if (!contenedor || !totalElem) return;
 
-const contenedor = document.querySelector(".libros-grid");
+    contenedor.innerHTML = "";
 
-if (contenedor) {
-  fetch("https://gutendex.com/books/")
-    .then(res => res.json())
-    .then(data => {
-      const libros = data.results.slice(0, 8);
+    let total = 0;
 
-      libros.forEach(libro => {
-        const card = document.createElement("div");
-        card.classList.add("card"); // ← CORREGIDO, antes card-libro
+    carrito.forEach((item, index) => {
+        total += item.precio;
 
-        card.innerHTML = `
-          <img src="${libro.formats["image/jpeg"] || "./img/no-image.png"}" alt="${libro.title}">
-          <h3>${libro.title}</h3>
-          <p class="precio">$${(Math.random() * 45 + 5).toFixed(2)}</p>
-          <button class="btn-agregar">Agregar al carrito</button>
+        contenedor.innerHTML += `
+            <div class="carrito-item">
+                <span>${item.titulo}</span>
+                <span>$${item.precio}</span>
+                <button class="btn-eliminar" data-index="${index}">X</button>
+            </div>
         `;
+    });
 
-        contenedor.appendChild(card);
-      });
-    })
-    .catch(error => console.error("Error cargando libros:", error));
+    totalElem.textContent = total;
 }
 
+mostrarCarrito();
 
-
-/* =============================
-          CARRITO
-============================= */
-
-let carrito = [];
-
-const contadorCarrito = document.querySelector("#contador-carrito");
-const itemsCarrito = document.querySelector("#items-carrito");
-const carritoPanel = document.querySelector("#carrito");
-
-/* ABRIR */
-document.getElementById("iconoCarrito")?.addEventListener("click", () => {
-  carritoPanel.classList.add("visible");
-});
-
-/* CERRAR */
-document.getElementById("cerrarCarrito")?.addEventListener("click", () => {
-  carritoPanel.classList.remove("visible");
-});
-
-/* VACIAR */
-document.getElementById("vaciar-carrito")?.addEventListener("click", () => {
-  carrito = [];
-  actualizarCarrito();
-});
-
-/* AGREGAR DESDE CUALQUIER CARD */
+/* --- Eliminar individual --- */
 document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("btn-agregar")) {
-    const card = e.target.closest(".card");
-    const titulo = card.querySelector("h3").textContent;
-    const precio = card.querySelector(".precio").textContent;
+    if (e.target.classList.contains("btn-eliminar")) {
+        const index = e.target.dataset.index;
 
-    carrito.push({ titulo, precio });
-    actualizarCarrito();
-  }
+        carrito.splice(index, 1);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+
+        mostrarCarrito();
+        actualizarContador();
+    }
 });
 
-/* ACTUALIZAR CONTENIDO */
-function actualizarCarrito() {
-  contadorCarrito.textContent = carrito.length;
+/* --- Vaciar carrito --- */
+const btnVaciar = document.getElementById("vaciar");
+if (btnVaciar) {
+    btnVaciar.addEventListener("click", () => {
+        carrito = [];
+        localStorage.setItem("carrito", JSON.stringify(carrito));
 
-  if (carrito.length === 0) {
-    itemsCarrito.innerHTML = "<p>Tu carrito está vacío</p>";
-    return;
-  }
+        mostrarCarrito();
+        actualizarContador();
+    });
+}
 
-  itemsCarrito.innerHTML = carrito
-    .map(item => `
-      <div class="item-carrito">
-        <strong>${item.titulo}</strong><br>${item.precio}
-      </div>
-    `)
-    .join("");
+/* ============================================================
+   ================  VALIDACIÓN FORMULARIO  ====================
+   ============================================================ */
+
+function validarFormulario() {
+    const nombre = document.getElementById("nombre");
+    const email = document.getElementById("email");
+    const mensaje = document.getElementById("mensaje");
+    const errores = document.getElementById("errores");
+
+    let mensajes = "";
+
+    errores.innerHTML = "";
+
+    if (nombre.value.trim() === "") mensajes += "<p>• El nombre es obligatorio</p>";
+    if (!email.value.includes("@")) mensajes += "<p>• El email no es válido</p>";
+    if (mensaje.value.length < 10) mensajes += "<p>• El mensaje debe tener al menos 10 caracteres</p>";
+
+    if (mensajes !== "") {
+        errores.innerHTML = mensajes;
+        errores.style.color = "red";
+        return false;
+    }
+
+    errores.innerHTML = "<p style='color:green'>✔ Envío exitoso</p>";
+    return true;
 }

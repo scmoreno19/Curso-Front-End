@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito</title>
-    <link rel="stylesheet" href="../Css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito - Booktify</title>
+  <link rel="stylesheet" href="../Css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body>
 
+<body>
 <header>
-    <h1>Carrito</h1>
+    <h1>📚 Booktify</h1>
     <nav>
         <a href="../index.html">Inicio</a>
         <a href="./libros.html">Libros</a>
         <a href="./reseñas.html">Reseñas</a>
         <a href="./PaginasAmigas.html">Páginas Amigas</a>
         <a href="./contacto.html">Contacto</a>
-        <a href="./carrito.html">🛒 Carrito <span id="contador-carrito">0</span></a>
+        <a href="./Carrito.html">🛒 Carrito <span id="contador-carrito">0</span></a>
     </nav>
 </header>
 
-<main class="contenedor-principal">
+<main>
+  <h2 style="text-align:center; margin:20px 0;">Tu Carrito</h2>
 
-    <h2>Productos en el carrito</h2>
+  <div class="carrito-contenedor">
+      <div id="lista-carrito"></div>
 
-    <div id="items-carrito" class="carrito-lista">
-        <p>El carrito está vacío</p>
-    </div>
+      <p class="carrito-total">Total: $<span id="total"></span></p>
 
-    <p id="total" class="carrito-total"></p>
-
-    <button id="vaciar-carrito" class="btn">Vaciar carrito</button>
-
+      <button id="vaciar" class="btn">Vaciar Carrito</button>
+  </div>
 </main>
 
-<script src="../Js/script.js"></script>
+<footer>
+  <p>© 2025 Booktify - Creado por Sofía Moreno</p>
+</footer>
+
+<script src="../js/script.js"></script>
 </body>
 </html>
