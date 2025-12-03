@@ -1,57 +1,52 @@
 function validarForm() {
-  const emailValido = "admin@admin.com";
-  const pswValido = "admin123";
+    const emailValido = "admin@admin.com";
+    const pswValido = "admin123";
 
-  const usrEmail = document.getElementById('id_mail').value.trim();
-  const usrPsw = document.getElementById('id_psw').value.trim();
+    const usrEmail = document.getElementById("id_mail").value.trim();
+    const usrPsw = document.getElementById("id_psw").value.trim();
 
-  let esValido = true;
+    let valido = true;
 
-  // Validar email vacío
-  if (usrEmail.length < 1) {
-    mostrarError("empty_email_error", "El campo email no puede estar vacío");
-    esValido = false;
-  } else {
-    ocultarError("empty_email_error");
-  }
+    ocultarError("email");
+    ocultarError("psw");
+    ocultarError("login");
 
-  // Validar contraseña vacía
-  if (usrPsw.length < 1) {
-    mostrarError("empty_psw_error", "El campo password no puede estar vacío");
-    esValido = false;
-  } else {
-    ocultarError("empty_psw_error");
-  }
+    if (usrEmail === "") {
+        mostrarError("email", "El email no puede estar vacío");
+        valido = false;
+    }
 
-  // Validar credenciales
-  if (usrEmail !== emailValido || usrPsw !== pswValido) {
-    mostrarError("login_error_error", "Las credenciales no son válidas");
-    esValido = false;
-  } else {
-    ocultarError("login_error_error");
-  }
+    if (usrPsw === "") {
+        mostrarError("psw", "La contraseña no puede estar vacía");
+        valido = false;
+    }
 
-  return esValido;
+    if (valido && (usrEmail !== emailValido || usrPsw !== pswValido)) {
+        mostrarError("login", "Credenciales incorrectas");
+        valido = false;
+    }
+
+    return valido;
 }
 
 function mostrarError(id, mensaje) {
-  const elemento = document.getElementById(id);
-  elemento.textContent = "❌ " + mensaje;
-  elemento.style.display = "block";
+    const e = document.getElementById(id + "_error");
+    e.textContent = "❌ " + mensaje;
+    e.style.display = "block";
 }
 
 function ocultarError(id) {
-  const elemento = document.getElementById(id);
-  elemento.style.display = "none";
+    const e = document.getElementById(id + "_error");
+    e.style.display = "none";
 }
 
-// Listener del botón
-const btnIngresar = document.getElementById("btn_login");
+document.getElementById("btn_login").addEventListener("click", function (event) {
+    event.preventDefault();
 
-btnIngresar.addEventListener("click", function (event) {
-  event.preventDefault();
+    if (validarForm()) {
+        document.getElementById("resultado").textContent = "✔ Envío exitoso";
 
-  if (validarForm()) {
-    window.location.href = "bienvenida.html";
-  }
+        // OPCIONAL:
+        // window.location.href = "bienvenida.html";
+    }
 });
