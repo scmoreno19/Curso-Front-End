@@ -39,6 +39,16 @@ nav a:hover {
 }
 
 
+.hero img {
+  width: 100%;
+  max-width: 500px;   
+  height: auto;
+  display: block;
+  margin: 20px auto;  /* La centra */
+  border-radius: 12px;
+}
+
+
 
 /* Productos - Flexbox */
 #productos {
